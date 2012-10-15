@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="wrap">
+	<!-- header -->
+	<div class="header clearfix">
+	    <h1 class="logo">
+	        <a href="/"><span class="first">m</span>ini bbs</a>
+	    </h1>
+	    <div class="login"><a href='/'>返回主页</a>　|　<a href="/logout/">退出</a></div>
+    </div>
+<div class="content">
+<h2>个人主页</h2>
+<h4>帖子列表:</h4>
+{% if note %}
+<hr />
+<table>
+<tr><td align='center'>编号</td><td align='center'>分类</td><td align='center'>作者</td><td align='center'>帖子标题</td><td align='center'>回复数</td></tr>
+{% else %}
+暂时没有任何帖子
+{% endif %}
+{% for n in note %}
+    <tr><td align='center'>{{ forloop.counter }}</td><td align='center'>{{n.category}}</td><td align='center'>{{n.user|safe|truncatewords:10}}</td> <td align='center'><a href='{{n.id}}'>{{n.title|safe|truncatewords:15}}</a></td><td align='center'>{{n.replays.count}}</td>
+{% endfor %}
+   {{parm}}
+{% if note %}
+</table>
+<hr />
+{% endif %}
+<h4>发布新帖</h4>
+<form action='' method='POST'>
+    {% csrf_token %}
+    <label>标题:<input type='text' name='newtitle'/></label><br/>
+    <!-- <label>作者:<input type='text' name='newauthor'/></label><br/> -->
+    <label>内容:<label><br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea cols="18" rows="10" name='newnote'></textarea><br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='submit' value='发帖'/>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="wrap">
+	<!-- header -->
+	<div class="header clearfix">
+	    <h1 class="logo">
+	        <a href="/"><span class="first">m</span>ini bbs</a>
+	    </h1>
+            {% if user.username %}
+	    <div class="login">欢迎回来 <a href="/user/">{{ user.username }}</a>　|　<a href="/logout/">注销{{ user.username }}</a></div>
+	    {% else %}
+	    <div class="login"><a href="/login/">登录</a>　|　<a href="/register/">注册</a></div>	 
+            {% endif %}   
+    </div>
+	<!-- // header-->
+	<!-- main -->
+<div class="content">
+{% if note %}
+<hr />
+<table>
+<tr><td align='center'>编号</td><td align='center'>分类</td><td align='center'>作者</td><td align='center'>帖子标题</td><td align='center'>回复数</td></tr>
+{% else %}
+暂时没有任何帖子,快来涂鸦吧!
+{% endif %}
+{% for n in note %}
+    <tr><td align='center'>{{ forloop.counter }}</td><td align='center'>{{n.category}}</td><td align='center'>{{n.user|safe|truncatewords:10}}</td> <td align='center'><a href='/user/{{n.id}}'>{{n.title|safe|truncatewords:15}}</a></td><td align='center'>{{n.replays.count}}</td>
+{% endfor %}
+{% if note %}
+</table>
+<a href='/?page_id=1'>首页</a>
+<a href='/?page_id={{pageup}}'>上一页</a>
+<a href='/?page_id={{pagedown}}'>下一页</a>
+<a href='/?page_id={{allpage}}'>末页</a>
+<hr />
+{% endif %}
+</div>
+	<!-- // main -->
+{% endblock %}

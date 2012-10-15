@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="wrap">
+	<!-- header -->
+	<div class="header clearfix">
+	    <h1 class="logo">
+	        <a href="/"><span class="first">m</span>ini bbs</a>
+	    </h1>
+            {% if user.username %}
+	    <div class="login"><a href='/'>返回主页</a>　|　<a href="/logout/">注销{{ user.username }}</a></div>
+	    {% else %}
+		<div class="login"><a href="/login/">登录</a>　|　<a href="/register/">注册</a>　|　<a href='/'>返回主页</a></div>	    
+	    {% endif %}
+        </div>
+<div class="content">
+<h2>帖子内容:</h2>
+<hr />
+   标题:{{subnote.title}}<br/>
+   内容: {{subnote.context}}<br/>
+   <hr />
+   {% if subnote.replays.all %}
+        {% for r in subnote.replays.all %}
+	回复人:{{r.user}}<br/> 
+	回复内容:{{r.name}}
+            <hr/>
+        {% endfor %}
+   {% else %}
+        暂无任何评论
+            <hr/>
+   {% endif %}
+<h4>发表回复:</h4>
+{% if user.username %}
+<form action='/user/{{subnote.id}}' method='POST'>
+   <textarea cols="18" rows="10" name='newreplay'></textarea><br/>
+   <input type='submit' value='提交回复'/>
+{% else %}
+<p><a href='/login/'/>请先登录再提交回复.</a></p>
+{% endif %}
+</div>
+{% endblock %}

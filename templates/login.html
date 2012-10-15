@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="wrap">
+	<!-- header -->
+	<div class="header clearfix">
+	    <h1 class="logo">
+	        <a href="/"><span class="first">m</span>ini bbs</a>
+	    </h1>
+	    <div class="login"><a href='/'>返回主页</a></div>
+        </div>
+<div class="content">
+<h2>登录页面</h2>
+<br/>
+{% if form.errors %}
+<p>您的用户名或密码错误，请重新输入</p>
+{% endif %}
+
+<form method="POST" action="{% url django.contrib.auth.views.login %}">
+    {% csrf_token %}
+        登录名称:  {{ form.username }}<br/>
+        登录密码:  {{ form.password }}<br/>
+<input type="submit" value="登录"/>
+<a href='/register/'>还没帐户吗?点击这里注册.</a>
+<input type="hidden" name="next" value="/user/" />
+</div>
+{% endblock %}

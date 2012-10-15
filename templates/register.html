@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="wrap">
+	<!-- header -->
+	<div class="header clearfix">
+	    <h1 class="logo">
+	        <a href="/"><span class="first">m</span>ini bbs</a>
+	    </h1>
+	    <div class="login"><a href='/'>返回主页</a>　|　<a href="/login/">登录</a></div>
+        </div>
+<div class="content">
+<h2>注册页面</h2>
+<form acton='.' method='POST'>
+<table>
+{{form.as_table}}
+</table>
+<p><input type="submit" value="确定"/></p>
+</form>
+</div>
+{% endblock %}
+

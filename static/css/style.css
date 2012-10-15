@@ -1,0 +1,55 @@
+/*
+	@fileOverview
+	The css for mini bbs
+	@author bcjack bcjack@sina.com
+	@date 2012-10-11
+ */
+.content {
+    background-image: url(/static/images/body.jpg);
+}
+ 
+.wrap {
+	min-width: 920px;
+	width: 100%;
+	background: #F9F9F9 url(/static/images/bg.png) repeat-x 0 0;
+	font-family: arial;
+	font-size: 12px;
+}
+
+.header {
+	width: 920px;
+	margin: 0 auto;
+	background-color: #1E424D;
+	color: #fff;
+}
+
+.logo {
+	float: left;
+	margin-bottom: 9px;
+	font-size: 20px;
+}
+
+.logo a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.logo .first {
+	font-size: 50px;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+.login {
+	float: right;
+	margin-top: 34px;
+}
+.login a {
+	color: #fff;	
+}
+#cp, #cp a {
+    color: #7777CC;
+    font: 12px arial;
+    text-align: center;
+}
+.errorlist{float: right;list-style:none;}
