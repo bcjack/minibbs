@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
-from mysite.noteblog.views import *
+from minibbs.noteblog.views import *
 from django.contrib import admin
-from mysite.settings import *
+from minibbs.settings import *
 admin.autodiscover()
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
